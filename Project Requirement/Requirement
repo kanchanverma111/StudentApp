@@ -1,0 +1,43 @@
+StudentId StudentName  StudentAddress
+1 John Lewisville,Tx
+2 Alexa FlowerMound,TX
+3 Smith Stamford,CT
+4 Jim New Have,CT
+5 Kevin Parlin,NJ
+
+
+CourseID CourseName
+Java101 Introduction to Java Programming
+DB205 Database concepts
+WA329 Web development and design foundation
+CA121 capstone Project
+CA123 Capstone project2
+
+
+
+
+SCID StudentID CourseID
+1 1 Java101
+2 1 DB205
+3 1 CA121
+4 2 DB205
+5 2 WA329
+6 2 CA123
+7 3 Java101
+8 3 DB205
+9 4 CA123
+10 4 WA329
+11 5 Java101
+12 5 CA121
+
+
+1. Give the number of students and their details who registered for Java101
+2. Give the number of students and their details who registered for CA123
+3. Give the student details who registered for more than 2 courses
+4 List the student details who reside in TX
+The service should be able to support the CRUD operations
+
+
+Stage 1:  Create a RESTful Service using Spring Boot and  Hibernate
+Stage 2: Create UI for the the above application supporting the CRUD operations and the above said operations from 1-4
+
