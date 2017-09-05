@@ -53,21 +53,21 @@ public class StudentController {
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
 	
-	/*//@GetMapping("/{courseId}")
+	@GetMapping("/{courseId}")
 	public List<Student> getStudentRegCourse(@PathVariable("courseId") String courseId) throws Exception{
-		List<Student> student = studentService.getStudentRegCourse(courseId);
+		List<Student> student = studentService.getStudentRegForCourse(courseId);
 		return student;
 	}
 	
-	//@GetMapping()
+	@GetMapping("/{twoCourse}")
 	public List<Student> getStudentRegTwoCourse() throws Exception{
-		List<Student> student = studentService.getStudentRegMoreTwoCourse();
+		List<Student> student = studentService.getStudentRegForMoreTwoCourse();
 		return student;
 	}
 	
-	//@GetMapping("/{studentaddress}")
+	@GetMapping("{studentAddress}")
 	public List<Student> getStudentTx(@PathVariable("studentAddress") String studentAddress) throws Exception{
 		List<Student> student = studentService.getStudentLeavesTx(studentAddress);
 		return student;
-	}*/
+	}
 }

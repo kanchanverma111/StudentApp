@@ -1,5 +1,5 @@
 package services;
-/*
+
 
 import java.util.List;
 
@@ -17,12 +17,11 @@ public interface StudentService {
 	
 	public void deleteStudent(Long studentId) throws Exception;
 	
-	public List<Student> getStudentRegCourse(String courseId) throws Exception;
+	public List<Student> getStudentRegForCourse(String courseId) throws Exception;
 	
-	public List<Student> getStudentRegMoreTwoCourse() throws Exception;
+	public List<Student> getStudentRegForMoreTwoCourse() throws Exception;
 	
-	public List<Student> getStudentLeavesTx(String studentAddress) throws Exception;
+	public List<Student> getStudentLivesInTx(String studentAddress) throws Exception;
 
 	
 }
-*/
