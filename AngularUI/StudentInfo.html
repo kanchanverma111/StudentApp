@@ -1,0 +1,265 @@
+<html>
+<head>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+
+<title>Student Enrollment Information Page</title>
+<script type="text/javascript">
+	var app = angular.module("StudentManagement", []);
+
+	//Controller Part
+	app
+			.controller(
+					"StudentController",
+					function($scope, $http) {
+
+						$scope.students = [];
+						$scope.studentForm = {
+							id : -1,
+							studentName : "",
+							studentAddress : ""
+						};
+
+						//Now load the data from server
+						_getStudentforJava101();
+						_getStudentforCA121();
+						_getStudentMorethanTwo();
+						_getStudentLivesTX();
+
+						
+						// with the help of id, we are going to find out whether it is put or post operation
+
+
+							$http({
+								method : method,
+								url : url,
+								data : angular.toJson($scope.countryForm),
+								headers : {
+									'Content-Type' : 'application/json'
+								}
+							}).then(_success, _error);
+						};
+
+						
+						/* Private Methods */
+						//HTTP GET- get all countries collection
+						function _getStudentforJava101() {
+							$http(
+									{
+										method : 'GET',
+										url : 'http://localhost:8080/student/courseId=Java101'
+									}).then(function successCallback(response) {
+								$scope.countries = response.data;
+							}, function errorCallback(response) {
+								console.log(response.statusText);
+							});
+						}
+
+						function _success(response) {
+							_refreshCountryData();
+							_clearFormData()
+						}
+
+						function _error(response) {
+							console.log(response.statusText);
+						}
+
+					
+					});
+	
+	function _getStudentforCA121() {
+		$http(
+				{
+					method : 'GET',
+					url : 'http://localhost:8080/student/courseId=Java101'
+				}).then(function successCallback(response) {
+			$scope.countries = response.data;
+		}, function errorCallback(response) {
+			console.log(response.statusText);
+		});
+	}
+
+	function _success(response) {
+		_refreshCountryData();
+		_clearFormData()
+	}
+
+	function _error(response) {
+		console.log(response.statusText);
+	}
+
+
+});
+
+function _getStudentMorethanTwo() {
+	$http(
+			{
+				method : 'GET',
+				url : 'http://localhost:8080/student/twoCourse'
+			}).then(function successCallback(response) {
+		$scope.countries = response.data;
+	}, function errorCallback(response) {
+		console.log(response.statusText);
+	});
+}
+
+function _success(response) {
+	_refreshCountryData();
+	_clearFormData()
+}
+
+function _error(response) {
+	console.log(response.statusText);
+}
+
+
+});
+
+function _getStudentLivesTX() {
+	$http(
+			{
+				method : 'GET',
+				url : 'http://localhost:8080/student/studentAddress=TX'
+			}).then(function successCallback(response) {
+		$scope.countries = response.data;
+	}, function errorCallback(response) {
+		console.log(response.statusText);
+	});
+}
+
+function _success(response) {
+	_refreshCountryData();
+	_clearFormData()
+}
+
+function _error(response) {
+	console.log(response.statusText);
+}
+
+
+});
+</script>
+<style>
+.blue-button {
+	background: #25A6E1;
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#25A6E1',
+		endColorstr='#188BC0', GradientType=0);
+	padding: 3px 5px;
+	color: #fff;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 12px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #1A87B9
+}
+
+.red-button {
+	background: #CD5C5C;
+	padding: 3px 5px;
+	color: #fff;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-size: 12px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #CD5C5C
+}
+
+table {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	width: 50%;
+}
+
+caption {
+	text-align: left;
+	color: silver;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 5px;
+}
+
+th {
+	background: SteelBlue;
+	color: white;
+}
+
+tbody tr:nth-child(even) {
+	background: WhiteSmoke;
+}
+
+tbody tr td:nth-child(2) {
+	text-align: center;
+}
+
+tbody tr td:nth-child(3), tbody tr td:nth-child(4) {
+	text-align: center;
+	font-family: monospace;
+}
+
+tfoot {
+	background: SeaGreen;
+	color: white;
+	text-align: right;
+}
+
+tfoot tr th:last-child {
+	font-family: monospace;
+}
+
+td, th {
+	border: 1px solid gray;
+	width: 25%;
+	text-align: left;
+	padding: 5px 10px;
+}
+</style>
+<head>
+<body ng-app="CountryManagement" ng-controller="CountryController">
+	<h1>Student Enrollment Information</h1>
+	<form ng-submit="submitCountry()">
+		<table>
+
+			<tr>
+				
+					<td> <a ng-click="_getStudentforJava101()" class="red-button">Student who registered for Java 101</a></td>
+			</tr>
+			<tr>
+				
+					<td> <a ng-click="_getStudentforCA121()" class="red-button">Student who registered for CA123</a></td>
+			</tr>
+			<tr>
+				
+					<td><a ng-click="_getStudentMorethanTwo()" class="red-button">Student who registered for more than two courses</a></td>
+			</tr>
+			<tr>
+				
+					<td><a ng-click="_getStudentLivesTX()" class="red-button">Student who lives in Texas</a></td>
+			</tr>
+		</table>
+	</form>
+
+	<table>
+		<tr>
+
+			<th>Student Name</th>
+			<th>Student ID</th>
+
+		</tr>
+
+		<tr ng-repeat="country in countries">
+
+			<td>{{ country.countryName }}</td>
+			<td>{{ country.population }}</td>
+
+</tr>
+
+	</table>
+
+
+
+
+
+</body>
+</html>
