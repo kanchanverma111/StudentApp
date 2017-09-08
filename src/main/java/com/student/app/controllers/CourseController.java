@@ -1,4 +1,4 @@
-package controllers;
+package com.student.app.controllers;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import models.Course;
-import services.CourseServiceImpl;
+import com.student.app.models.Course;
+import com.student.app.services.CourseServiceImpl;
 
 @RestController
 @RequestMapping("course")
@@ -23,32 +23,38 @@ public class CourseController {
 
 	@Autowired
 	private CourseServiceImpl courseService;
-	
+
 	@PostMapping
-	public Course create(@RequestBody Course course) throws Exception{
+	public Course create(@RequestBody Course course) throws Exception {
 		return courseService.createCourse(course);
 	}
-	
+
 	@PutMapping
-	public Course update(@RequestBody Course course) throws Exception{
+	public Course update(@RequestBody Course course) throws Exception {
 		return courseService.updateCourse(course);
 	}
-	
+
 	@GetMapping
-	public List<Course> getAllCourse() throws Exception{
-		return courseService.getAllCourse();
+	public List<Course> getAllCourse() throws Exception {
+
+		List li = courseService.getAllCourse();
+
+		for (Object item : li) {
+			System.out.println(item);
+		}
+		return li;
+
 	}
-	
+
 	@GetMapping("/{courseId}")
-	public Course getStudentById(@PathVariable("courseId") Long courseId) throws Exception{
+	public Course getStudentById(@PathVariable("courseId") Long courseId) throws Exception {
 		return courseService.getCourseById(courseId);
 	}
-	
+
 	@DeleteMapping("/{courseId}")
-	public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("courseId") Long courseId) throws Exception{
+	public ResponseEntity<HttpStatus> deleteCourse(@PathVariable("courseId") Long courseId) throws Exception {
 		courseService.deleteCourse(courseId);
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
-	
-	
+
 }

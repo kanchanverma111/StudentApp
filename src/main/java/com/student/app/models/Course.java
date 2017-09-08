@@ -1,4 +1,5 @@
-package models;
+package com.student.app.models;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,29 +19,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-/*
-@Data
-@NoArgsConstructor
-@AllArgsConstructor*/
+
 @Entity
-@Table(name="Course")
-//@XmlRootElement
-public class Course implements Serializable {
+@Table(name="course")
+
+public class Course  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long courseId;
+	private Long courseID;
 	private String courseName;
 	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinTable(name = "studentCourse", joinColumns = @JoinColumn(name = "courseId", referencedColumnName = "courseId"),
-			inverseJoinColumns = @JoinColumn(name = "studentId", referencedColumnName = "studentId"))
+	@JoinTable(name = "studentcourse", joinColumns = @JoinColumn(name = "courseID", referencedColumnName = "courseID"),
+			inverseJoinColumns = @JoinColumn(name = "studentID", referencedColumnName = "studentID"))
 	
 	@JsonIgnore
 	private List<Student> student = new ArrayList();
@@ -54,17 +49,17 @@ public class Course implements Serializable {
 
 	public Course(Long courseId, String courseName, Integer versionId) {
 		super();
-		this.courseId = courseId;
+		this.courseID = courseId;
 		this.courseName = courseName;
 		this.versionId = versionId;
 	}
 
 	public Long getCourseId() {
-		return courseId;
+		return courseID;
 	}
 
 	public void setCourseId(Long courseId) {
-		this.courseId = courseId;
+		this.courseID = courseId;
 	}
 
 	public String getCourseName() {

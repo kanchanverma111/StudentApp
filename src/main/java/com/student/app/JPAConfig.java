@@ -1,5 +1,5 @@
-package configurations;
-/*package com.chitransh.app.config;
+package com.student.app;
+/*
 
 import java.beans.PropertyVetoException;
 import java.util.HashMap;

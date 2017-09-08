@@ -1,4 +1,4 @@
-package models;
+package com.student.app.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,16 +15,12 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 /*@Data
 @NoArgsConstructor
 @AllArgsConstructor*/
 @Entity
-@Table(name="Student")
+@Table(name="student")
 //@XmlRootElement
 public class Student implements Serializable {
 	
@@ -32,7 +28,7 @@ public class Student implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long studentId;
+	private Long studentID;
 	private String studentName;
 	private String studentAddress;
 	
@@ -40,7 +36,7 @@ public class Student implements Serializable {
 	private Integer versionId;
 	
 	@ManyToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Course> courses = new ArrayList();
+	private List<Course> courses = new ArrayList<>();
 
 
 	public Student() {
@@ -48,16 +44,16 @@ public class Student implements Serializable {
 	}
 	public Student(Long studentId, String studentName, String studentAddress, Integer versionId) {
 		super();
-		this.studentId = studentId;
+		this.studentID = studentId;
 		this.studentName = studentName;
 		this.studentAddress = studentAddress;
 		this.versionId = versionId;
 	}
 	public Long getStudentId() {
-		return studentId;
+		return studentID;
 	}
 	public void setStudentId(Long studentId) {
-		this.studentId = studentId;
+		this.studentID = studentId;
 	}
 	public String getStudentName() {
 		return studentName;

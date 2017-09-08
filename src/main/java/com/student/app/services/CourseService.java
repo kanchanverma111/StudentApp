@@ -1,9 +1,10 @@
-package services;
-/*package service;
-
+package com.student.app.services;
+/*package services;
 import java.util.List;
 
-import com.chitransh.app.model.Course;
+import models.Course;
+
+
 
 public interface CourseService {
 

@@ -1,4 +1,4 @@
-package controllers;
+package com.student.app.controllers;
 
 import java.util.List;
 
@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import models.Student;
-import repositories.StudentRepository;
-
-import services.StudentServiceImpl;
+import com.student.app.models.Student;
+import com.student.app.repositories.StudentRepository;
+import com.student.app.services.StudentServiceImpl;
 
 @RestController
 @RequestMapping("student")
@@ -25,49 +24,49 @@ public class StudentController {
 
 	@Autowired
 	private StudentServiceImpl studentService;
-	
+
 	@PostMapping
-	public Student create(@RequestBody Student student) throws Exception{
+	public Student create(@RequestBody Student student) throws Exception {
 		return studentService.createStudent(student);
-	} 	
-	
+	}
+
 	@PutMapping
-	public Student update(@RequestBody Student student) throws Exception{
+	public Student update(@RequestBody Student student) throws Exception {
 		return studentService.updateStudent(student);
 	}
-	
+
 	@GetMapping
-	public List<Student> getAllStudent() throws Exception{
+	public List<Student> getAllStudent() throws Exception {
 		return studentService.getAllStudent();
 	}
-	
+
 	@GetMapping("/{studentId}")
-	public Student getStudent(@PathVariable("studentId") Long studentId) throws Exception{
+	public Student getStudent(@PathVariable("studentId") Long studentId) throws Exception {
 		return studentService.getStudentById(studentId);
-		
+
 	}
-	
+
 	@DeleteMapping("/{studentId}")
-	public ResponseEntity<HttpStatus> deleteStudent(@PathVariable("studentId") Long studentId) throws Exception{
+	public ResponseEntity<HttpStatus> deleteStudent(@PathVariable("studentId") Long studentId) throws Exception {
 		studentService.deleteStudent(studentId);
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
-	
-	@GetMapping("/{courseId}")
-	public List<Student> getStudentRegCourse(@PathVariable("courseId") String courseId) throws Exception{
+
+	/*@GetMapping("/{courseId}")
+	public List<Student> getStudentRegCourse(@PathVariable("courseId") String courseId) throws Exception {
 		List<Student> student = studentService.getStudentRegForCourse(courseId);
 		return student;
 	}
-	
+
 	@GetMapping("/{twoCourse}")
-	public List<Student> getStudentRegTwoCourse() throws Exception{
+	public List<Student> getStudentRegTwoCourse() throws Exception {
 		List<Student> student = studentService.getStudentRegForMoreTwoCourse();
 		return student;
 	}
-	
+
 	@GetMapping("{studentAddress}")
-	public List<Student> getStudentTx(@PathVariable("studentAddress") String studentAddress) throws Exception{
-		List<Student> student = studentService.getStudentLeavesTx(studentAddress);
+	public List<Student> getStudentTx(@PathVariable("studentAddress") String studentAddress) throws Exception {
+		List<Student> student = studentService.getStudentLivesInTx(studentAddress);
 		return student;
-	}
+	}*/
 }

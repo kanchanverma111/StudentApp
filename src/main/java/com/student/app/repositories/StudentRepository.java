@@ -1,4 +1,4 @@
-package repositories;
+package com.student.app.repositories;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import models.Student;
+import com.student.app.models.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
-    
+/*    
 	public Optional<Student> findByStudentName(String studentName);
 	
 	public List<Student> findDistinctByStudentName(String studentName);
@@ -21,6 +21,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	public List<Student> findAllStudentRegCourse(String courseId);
 	
 	@Query(value = "select student.studentId, student.studentName, student.studentAddress from student inner join studentCourse on student.studentId = studentCourse.studentId group by studentId, studentName, studentAddress having count(studentCourse.courseId)>2", nativeQuery = true)
-	public List<Student> findAllStudentRegMoreTwoCourse();
+	public List<Student> findAllStudentRegMoreTwoCourse();*/
 
 }

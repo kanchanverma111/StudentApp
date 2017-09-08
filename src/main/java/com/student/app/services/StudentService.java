@@ -1,4 +1,5 @@
-package services;
+package com.student.app.services;
+/*package services;
 
 
 import java.util.List;
@@ -25,3 +26,4 @@ public interface StudentService {
 
 	
 }
+*/

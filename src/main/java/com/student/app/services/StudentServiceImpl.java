@@ -1,4 +1,4 @@
-package services;
+package com.student.app.services;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import models.Student;
-import repositories.StudentRepository;
+import com.student.app.models.Student;
+import com.student.app.repositories.StudentRepository;
 
 @Service
 public class StudentServiceImpl {
@@ -43,7 +43,7 @@ public class StudentServiceImpl {
 
 	
 	//List of students registered for course with courseId
-	public List<Student> getStudentRegForCourse(String courseId) throws Exception {
+	/*public List<Student> getStudentRegForCourse(String courseId) throws Exception {
 
 		return studentRepository.findAllStudentRegCourse(courseId);
 	}
@@ -60,10 +60,7 @@ public class StudentServiceImpl {
 
 		return studentRepository.findAllTxStudentNativeQuery();
 	}
-
-	public List<Student> getStudentLeavesTx(String studentAddress) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+*/
+	
 
 }
