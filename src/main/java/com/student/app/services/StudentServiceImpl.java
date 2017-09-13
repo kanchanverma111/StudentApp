@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.student.app.models.Student;
 import com.student.app.repositories.StudentRepository;
 
+import javassist.NotFoundException;
+
 @Service
 public class StudentServiceImpl {
 
@@ -36,12 +38,15 @@ public class StudentServiceImpl {
 	}
 
 	public void deleteStudent(Long studentId) throws Exception {
-		// TODO Auto-generated method stub
+		Student student = studentRepository.findOne(studentId);
+		if(student == null){
+			throw new NotFoundException("Student with "+studentId+" not found");
+		}
 
 		studentRepository.delete(studentId);
 	}
 
-	
+		
 	//List of students registered for course with courseId
 	/*public List<Student> getStudentRegForCourse(String courseId) throws Exception {
 
@@ -64,3 +69,6 @@ public class StudentServiceImpl {
 	
 
 }
+
+
+

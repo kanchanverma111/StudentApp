@@ -16,12 +16,8 @@ import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-/*@Data
-@NoArgsConstructor
-@AllArgsConstructor*/
 @Entity
 @Table(name="student")
-//@XmlRootElement
 public class Student implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -32,9 +28,7 @@ public class Student implements Serializable {
 	private String studentName;
 	private String studentAddress;
 	
-	@Version
-	private Integer versionId;
-	
+		
 	@ManyToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Course> courses = new ArrayList<>();
 
@@ -42,12 +36,11 @@ public class Student implements Serializable {
 	public Student() {
 		super();
 	}
-	public Student(Long studentId, String studentName, String studentAddress, Integer versionId) {
+	public Student(Long studentId, String studentName, String studentAddress) {
 		super();
 		this.studentID = studentId;
 		this.studentName = studentName;
 		this.studentAddress = studentAddress;
-		this.versionId = versionId;
 	}
 	public Long getStudentId() {
 		return studentID;
@@ -67,12 +60,32 @@ public class Student implements Serializable {
 	public void setStudentAddress(String studentAddress) {
 		this.studentAddress = studentAddress;
 	}
-	public Integer getVersionId() {
-		return versionId;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((studentID == null) ? 0 : studentID.hashCode());
+		return result;
 	}
-	public void setVersionId(Integer versionId) {
-		this.versionId = versionId;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Student other = (Student) obj;
+		if (studentID == null) {
+			if (other.studentID != null)
+				return false;
+		} else if (!studentID.equals(other.studentID))
+			return false;
+		return true;
 	}
 	
 	
 }
+
+

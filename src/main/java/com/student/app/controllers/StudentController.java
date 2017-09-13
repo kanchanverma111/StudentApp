@@ -2,9 +2,15 @@ package com.student.app.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,18 +24,28 @@ import com.student.app.models.Student;
 import com.student.app.repositories.StudentRepository;
 import com.student.app.services.StudentServiceImpl;
 
+
+@CrossOrigin("http://localhost:8082")
 @RestController
 @RequestMapping("student")
-public class StudentController {
+public class StudentController 
+{
 
+	private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
+	
 	@Autowired
 	private StudentServiceImpl studentService;
 
 	@PostMapping
-	public Student create(@RequestBody Student student) throws Exception {
+	public Student create(@RequestBody @Valid Student student) throws Exception {
 		return studentService.createStudent(student);
 	}
 
+	/*@PutMapping("/{studentId}")
+	public Student update(@PathVariable("studentId") Long studentId,@RequestBody Student student) throws Exception {
+		return studentService.updateStudent(studentId , student);
+	}*/
+	
 	@PutMapping
 	public Student update(@RequestBody Student student) throws Exception {
 		return studentService.updateStudent(student);
