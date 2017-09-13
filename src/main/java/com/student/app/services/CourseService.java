@@ -1,10 +1,8 @@
 package com.student.app.services;
-/*package services;
+
 import java.util.List;
 
-import models.Course;
-
-
+import com.student.app.models.Course;
 
 public interface CourseService {
 
@@ -19,4 +17,3 @@ public interface CourseService {
 	public void deleteCourse(Long courseId) throws Exception;
 	
 }
-*/

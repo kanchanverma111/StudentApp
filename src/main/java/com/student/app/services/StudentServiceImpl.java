@@ -48,7 +48,7 @@ public class StudentServiceImpl {
 
 		
 	//List of students registered for course with courseId
-	/*public List<Student> getStudentRegForCourse(String courseId) throws Exception {
+	public List<Student> getStudentRegForCourse(String courseId) throws Exception {
 
 		return studentRepository.findAllStudentRegCourse(courseId);
 	}
@@ -63,9 +63,9 @@ public class StudentServiceImpl {
 	//List of students who live in Texas
 	public List<Student> getStudentLivesInTx(String studentAddress) throws Exception {
 
-		return studentRepository.findAllTxStudentNativeQuery();
+		return studentRepository.findAllTxStudentNativeQuery(studentAddress);
 	}
-*/
+
 	
 
 }

@@ -68,21 +68,21 @@ public class StudentController
 		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
 	}
 
-	/*@GetMapping("/{courseId}")
+	@GetMapping("/bycourse/{courseId}")
 	public List<Student> getStudentRegCourse(@PathVariable("courseId") String courseId) throws Exception {
 		List<Student> student = studentService.getStudentRegForCourse(courseId);
 		return student;
 	}
 
-	@GetMapping("/{twoCourse}")
+	@GetMapping("/twoCourse/")
 	public List<Student> getStudentRegTwoCourse() throws Exception {
 		List<Student> student = studentService.getStudentRegForMoreTwoCourse();
 		return student;
 	}
 
-	@GetMapping("{studentAddress}")
+	@GetMapping("/livesin/{studentAddress}")
 	public List<Student> getStudentTx(@PathVariable("studentAddress") String studentAddress) throws Exception {
 		List<Student> student = studentService.getStudentLivesInTx(studentAddress);
 		return student;
-	}*/
+	}
 }

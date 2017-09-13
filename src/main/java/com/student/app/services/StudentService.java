@@ -1,10 +1,8 @@
 package com.student.app.services;
-/*package services;
-
 
 import java.util.List;
 
-import models.Student;
+import com.student.app.models.Student;
 
 public interface StudentService {
 	
@@ -22,8 +20,7 @@ public interface StudentService {
 	
 	public List<Student> getStudentRegForMoreTwoCourse() throws Exception;
 	
-	public List<Student> getStudentLivesInTx(String studentAddress) throws Exception;
+	public List<Student> getStudentLivesInTx() throws Exception;
 
 	
 }
-*/

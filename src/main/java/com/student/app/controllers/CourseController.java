@@ -23,17 +23,12 @@ public class CourseController {
 
 	@Autowired
 	private CourseServiceImpl courseService;
-
-	@PostMapping
-	public Course create(@RequestBody Course course) throws Exception {
-		return courseService.createCourse(course);
+	
+	@GetMapping("/{courseId}")
+	public Course getStudentById(@PathVariable("courseId") Long courseId) throws Exception {
+		return courseService.getCourseById(courseId);
 	}
-
-	@PutMapping
-	public Course update(@RequestBody Course course) throws Exception {
-		return courseService.updateCourse(course);
-	}
-
+	
 	@GetMapping
 	public List<Course> getAllCourse() throws Exception {
 
@@ -43,12 +38,16 @@ public class CourseController {
 			System.out.println(item);
 		}
 		return li;
-
+	}
+	
+	@PutMapping
+	public Course update(@RequestBody Course course) throws Exception {
+		return courseService.updateCourse(course);
 	}
 
-	@GetMapping("/{courseId}")
-	public Course getStudentById(@PathVariable("courseId") Long courseId) throws Exception {
-		return courseService.getCourseById(courseId);
+	@PostMapping
+	public Course create(@RequestBody Course course) throws Exception {
+		return courseService.createCourse(course);
 	}
 
 	@DeleteMapping("/{courseId}")

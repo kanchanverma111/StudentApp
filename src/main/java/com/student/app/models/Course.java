@@ -19,8 +19,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
 @Entity
 @Table(name="course")
 
@@ -32,6 +30,15 @@ public class Course  implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long courseID;
 	private String courseName;
+	
+	
+	  /* @ManyToMany(cascade = CascadeType.ALL)
+	    @JoinTable(name = "book_publisher", joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"), 
+	    inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id"))
+	    public Set<Publisher> getPublishers() {
+	        return publishers;
+	    }*/
+	
 	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
 	@JoinTable(name = "studentcourse", joinColumns = @JoinColumn(name = "courseID", referencedColumnName = "courseID"),
@@ -83,7 +90,6 @@ public class Course  implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((courseID == null) ? 0 : courseID.hashCode());
-		result = prime * result + ((courseName == null) ? 0 : courseName.hashCode());
 		return result;
 	}
 
@@ -101,11 +107,7 @@ public class Course  implements Serializable {
 				return false;
 		} else if (!courseID.equals(other.courseID))
 			return false;
-		if (courseName == null) {
-			if (other.courseName != null)
-				return false;
-		} else if (!courseName.equals(other.courseName))
-			return false;
+		
 		return true;
 	}
 
