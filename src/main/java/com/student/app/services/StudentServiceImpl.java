@@ -61,9 +61,9 @@ public class StudentServiceImpl {
 	}
 
 	//List of students who live in Texas
-	public List<Student> getStudentLivesInTx(String studentAddress) throws Exception {
+	public List<Student> getStudentLivesInTx() throws Exception {
 
-		return studentRepository.findAllTxStudentNativeQuery(studentAddress);
+		return studentRepository.findAllTxStudentNativeQuery();
 	}
 
 	

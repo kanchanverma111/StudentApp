@@ -20,7 +20,7 @@ public interface StudentService {
 	
 	public List<Student> getStudentRegForMoreTwoCourse() throws Exception;
 	
-	public List<Student> getStudentLivesInTx() throws Exception;
+	public List<Student> getStudentLivesInTx(String studentAddress) throws Exception;
 
 	
 }

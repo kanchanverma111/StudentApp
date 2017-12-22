@@ -10,55 +10,76 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 @Entity
-@Table(name="student")
+@Table(name = "student")
 public class Student implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long studentID;
 	private String studentName;
 	private String studentAddress;
-	
-		
-	@ManyToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Course> courses = new ArrayList<>();
 
+	// @ManyToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch =
+	// FetchType.LAZY)
+	// @ManyToMany(mappedBy = "student")
+
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Course.class)
+	@JoinTable(name = "StudCourse", joinColumns = {
+			@JoinColumn(name = "studentID", nullable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "courseID", nullable = false) })
+	private List<Course> courses = new ArrayList<>();
 
 	public Student() {
 		super();
 	}
+
 	public Student(Long studentId, String studentName, String studentAddress) {
 		super();
 		this.studentID = studentId;
 		this.studentName = studentName;
 		this.studentAddress = studentAddress;
 	}
+
 	public Long getStudentId() {
 		return studentID;
 	}
+
 	public void setStudentId(Long studentId) {
 		this.studentID = studentId;
 	}
+
 	public String getStudentName() {
 		return studentName;
 	}
+
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
+
 	public String getStudentAddress() {
 		return studentAddress;
 	}
+
 	public void setStudentAddress(String studentAddress) {
 		this.studentAddress = studentAddress;
+	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
 	}
 
 	@Override
@@ -68,6 +89,7 @@ public class Student implements Serializable {
 		result = prime * result + ((studentID == null) ? 0 : studentID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -84,8 +106,5 @@ public class Student implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }
-
-

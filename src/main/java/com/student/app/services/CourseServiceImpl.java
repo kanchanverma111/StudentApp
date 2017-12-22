@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.student.app.models.Course;
+import com.student.app.models.Student;
 import com.student.app.repositories.CourseRepository;
+
+import javassist.NotFoundException;
 
 @Service
 public class CourseServiceImpl{
@@ -37,6 +40,11 @@ public class CourseServiceImpl{
 	}
 
 	public void deleteCourse(Long courseId) throws Exception {
+		
+		Course course = courseRepository.findOne(courseId);
+		if(course == null){
+			throw new NotFoundException("Course with "+courseId+" not found");
+		}
 
 		courseRepository.delete(courseId);
 	}

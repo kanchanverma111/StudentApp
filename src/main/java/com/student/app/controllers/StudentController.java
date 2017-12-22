@@ -74,15 +74,21 @@ public class StudentController
 		return student;
 	}
 
-	@GetMapping("/twoCourse/")
+	@GetMapping("/twoCourse")
 	public List<Student> getStudentRegTwoCourse() throws Exception {
 		List<Student> student = studentService.getStudentRegForMoreTwoCourse();
 		return student;
 	}
 
-	@GetMapping("/livesin/{studentAddress}")
-	public List<Student> getStudentTx(@PathVariable("studentAddress") String studentAddress) throws Exception {
-		List<Student> student = studentService.getStudentLivesInTx(studentAddress);
+//	/*@GetMapping("/livesin/{studentAddress}")
+//	public List<Student> getStudentTx(@PathVariable("studentAddress") String studentAddress) throws Exception {
+//		List<Student> student = studentService.getStudentLivesInTx(studentAddress);
+//		return student;
+//	}*/
+	
+	@GetMapping("/livesin")
+	public List<Student> getStudentTx() throws Exception {
+		List<Student> student = studentService.getStudentLivesInTx();
 		return student;
 	}
 }

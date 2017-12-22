@@ -15,8 +15,9 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	
 	public List<Student> findDistinctByStudentName(String studentName);
 	
-	@Query(value="select * from student where studentAddress='holy cow, TX'", nativeQuery=true)
-	public List<Student> findAllTxStudentNativeQuery(String studentAddress);
+	//@Query(value="select * from student where studentAddress='holy cow, TX'", nativeQuery=true)
+	@Query(value="select * from student where studentAddress like '%NJ'", nativeQuery=true)
+	public List<Student> findAllTxStudentNativeQuery();
 	
 	@Query(value = "select student.studentId, student.studentName, student.studentAddress from student inner join studentCourse on student.studentId = studentCourse.studentId where studentCourse.courseId = ?", nativeQuery = true)
 	public List<Student> findAllStudentRegCourse(String courseId);
